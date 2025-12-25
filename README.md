@@ -1,1 +1,389 @@
-# DGR-Tournaments
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGR Tournaments</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --secondary-dark: #1e293b;
+            --accent-orange: #ff4500;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
+            --card-bg: rgba(30, 41, 59, 0.7);
+        }
+
+        /* ENABLE SMOOTH SCROLLING */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-white);
+            padding-bottom: 70px;
+        }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--secondary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            /* This makes the logo pop */
+            filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.5));
+        }
+
+        .brand-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            letter-spacing: 1px;
+        }
+
+        .menu-btn {
+            background: transparent;
+            border: 2px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: radial-gradient(circle at center, rgba(88, 28, 135, 0.4) 0%, var(--primary-dark) 70%);
+            text-align: center;
+            padding: 40px 20px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6));
+            object-fit: contain;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            background: linear-gradient(to right, #fff, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 5px;
+        }
+
+        .hero-desc {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin: 20px 0;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #ff8c00, #ff4500);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-telegram {
+            background: linear-gradient(90deg, #0088cc, #005f8f);
+            color: white;
+        }
+
+        /* --- Stats Cards --- */
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .stat-number { font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin-bottom: 5px; }
+        .stat-label { color: #e2e8f0; font-size: 1.1rem; }
+        .card.money .stat-number { color: #facc15; } 
+        .card.support .stat-number { color: #a78bfa; } 
+
+        /* --- Features --- */
+        .section-title { text-align: center; font-size: 2rem; margin: 40px 0 20px; color: var(--accent-orange); font-weight: 700; }
+        .section-subtitle { text-align: center; font-size: 1.5rem; margin-bottom: 30px; color: white; }
+        .feature-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+        .icon-shield { color: #f97316; }
+        .icon-trophy { color: #eab308; }
+        .icon-bolt { color: #ef4444; }
+        .feature-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .verified-badge { color: #22c55e; font-size: 3rem; margin-bottom: 10px; }
+
+        /* --- Bottom Nav --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--secondary-dark);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 999;
+        }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-gray); text-decoration: none; font-size: 0.8rem; }
+        .nav-item.active { color: var(--accent-orange); }
+        .nav-item i { font-size: 1.2rem; margin-bottom: 4px; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .download-section {
+            background: linear-gradient(180deg, var(--primary-dark) 0%, rgba(255, 69, 0, 0.1) 100%);
+            padding-bottom: 40px;
+            scroll-margin-top: 100px; /* Adjusts scroll position */
+        }
+
+        .copyright { text-align: center; color: #64748b; font-size: 0.8rem; margin-top: 30px; margin-bottom: 20px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-area">
+            <!-- LOGO: Save your image as 'logo.png' in the same folder -->
+            <img src="logo.png" alt="DGR Logo" class="logo-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/8286/8286658.png'">
+            <span class="brand-name">DGR ESPORTS</span>
+        </div>
+        <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- HERO LOGO: Same here, looks for logo.png -->
+        <img src="logo.png" alt="DGR Logo" class="hero-logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/8286/8286658.png'">
+        
+        <h1 class="hero-title">DGR TOURNAMENTS</h1>
+        <h3 class="hero-subtitle">বাংলাদেশের একমাত্র এবং প্রথম ই-স্পোর্টস প্ল্যাটফর্ম</h3>
+        
+        <p class="hero-desc">
+            সবচেয়ে প্রতিযোগিতামূলক ফ্রি ফায়ার টুর্নামেন্টে যোগ দিন, চমৎকার পুরস্কার জিতুন এবং গেমিং অঙ্গনে চূড়ান্ত চ্যাম্পিয়ন হয়ে উঠুন।
+        </p>
+
+        <!-- TOP BUTTON: Link points to the ID #download-box -->
+        <a href="#download-box" class="btn btn-primary">
+            <i class="fa-solid fa-download" style="margin-right: 8px;"></i> অ্যাপ ডাউনলোড
+        </a>
+        
+        <a href="https://t.me/dgrtournamentsupport" class="btn btn-secondary">
+            <i class="fa-solid fa-headset" style="margin-right: 8px;"></i> যোগাযোগ করুন
+        </a>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="container">
+        <div class="card">
+            <div class="stat-number">১ হাজার+</div>
+            <div class="stat-label">সক্রিয় খেলোয়াড়</div>
+        </div>
+        <div class="card">
+            <div class="stat-number">৫০,০০০+</div>
+            <div class="stat-label">টুর্নামেন্ট</div>
+        </div>
+        <div class="card money">
+            <div class="stat-number">৮১,০০০+</div>
+            <div class="stat-label">টাকার পুরস্কার</div>
+        </div>
+        <div class="card support">
+            <div class="stat-number">২৪/৭</div>
+            <div class="stat-label">সাপোর্ট</div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container">
+        <h2 class="section-title">গেমিং</h2>
+        <h2 class="section-subtitle" style="color: #ff6b00; margin-top: -15px;">বৈশিষ্ট্যসমূহ</h2>
+        <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">
+            চূড়ান্ত ফ্রি ফায়ার টুর্নামেন্ট প্ল্যাটফর্মে অভিজ্ঞতা নিন
+        </p>
+
+        <div class="card">
+            <i class="fa-solid fa-shield-halved feature-icon icon-shield"></i>
+            <div class="feature-title" style="color: #38bdf8;">নিরাপদ পেমেন্ট</div>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">
+                সকল লেনদেনের জন্য ব্যাংক-গ্রেড নিরাপত্তা তাৎক্ষণিক জমা এবং তোলার সুবিধা।
+            </p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-trophy feature-icon icon-trophy"></i>
+            <div class="feature-title" style="color: #a78bfa;">মহাকাব্যিক টুর্নামেন্ট</div>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">
+                বিশাল পুরস্কারের অর্থ এবং বিজয়ীদের জন্য বিশেষ পুরস্কার সহ দৈনন্দিন টুর্নামেন্ট।
+            </p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-bolt feature-icon icon-bolt"></i>
+            <div class="feature-title" style="color: #f87171;">বিদ্যুৎ দ্রুত</div>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">
+                ত্বরিত টুর্নামেন্ট নন্দন এবং শূন্য ল্যাগ সহ নিরবচ্ছিন্ন গেমপ্লে অভিজ্ঞতা।
+            </p>
+        </div>
+    </div>
+
+    <!-- Download Section (ID ADDED HERE) -->
+    <div id="download-box" class="download-section">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">এখনই</h2>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">ডাউনলোড করুন</h2>
+            
+            <p style="color: #cbd5e1; margin-bottom: 30px;">
+                হাজার হাজার খেলোয়াড়ের সাথে যোগ দিন এবং আজই আপনার গেমিং যাত্রা শুরু করুন!
+            </p>
+
+            <!-- BOTTOM BUTTON: Actual Download Link -->
+            <!-- REPLACE 'DGR_App.apk' with your actual file link (e.g. drive link) -->
+            <a href="DGR_App.apk" download class="btn btn-primary" style="background: white; color: #ff4500;">
+                <i class="fa-solid fa-download" style="margin-right: 8px;"></i> অ্যাপটি ডাউনলোড করুন
+            </a>
+        </div>
+    </div>
+
+    <!-- Community / Support -->
+    <div class="container">
+        <div class="card" style="border: 1px solid #22c55e;">
+            <i class="fa-solid fa-circle-check verified-badge"></i>
+            <h3 class="feature-title">ভেরিফায়েড চ্যানেল</h3>
+            <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 20px;">
+                অফিসিয়াল এবং ভেরিফায়েড
+            </p>
+            
+            <h3 style="color: #4ade80; margin-bottom: 10px;">আমাদের সাথে যোগাযোগ</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">
+                যেকোনো সাহায্যের জন্য আমাদের সাথে যোগাযোগ করুন
+            </p>
+
+            <a href="https://t.me/dgrtournamentsupport" class="btn btn-telegram">
+                <i class="fa-brands fa-telegram" style="margin-right: 8px;"></i> চ্যানেল জয়েন করুন
+            </a>
+
+            <div style="margin-top: 30px;">
+                <i class="fa-regular fa-clock" style="color: #22c55e; font-size: 1.5rem;"></i>
+                <div style="font-weight: 700; font-size: 1.2rem; margin: 10px 0;">সাপোর্ট সময়</div>
+                <div style="color: #94a3b8;">২৪/৭ অনলাইন সাপোর্ট</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Copyright -->
+    <div class="copyright">
+        &copy; 2025 DGR ESPORTS | সব অধিকার সংরক্ষিত।
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            হোম
+        </a>
+        <a href="#download-box" class="nav-item">
+            <i class="fa-solid fa-download"></i>
+            ডাউনলোড
+        </a>
+        <a href="https://t.me/dgrtournamentsupport" class="nav-item">
+            <i class="fa-solid fa-headset"></i>
+            যোগাযোগ
+        </a>
+    </nav>
+
+</body>
+</html>
